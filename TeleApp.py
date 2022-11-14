@@ -25,15 +25,15 @@ def convert(message: telebot.types.Message):
         values = message.text.split(' ')
 
         if len(values) != 3:
-            raise APIException('Количество параметров больше или меньше допустимого')
+            raise APIException('Количество параметров больше или меньше допустимого /help')
 
         quote, base, amount = values
         total_base = CurrencyConverter.convert(quote, base, amount)
 
     except APIException as e:
-        bot.reply_to(message, f'Ошибка ввода данных \n{e}')
+        bot.reply_to(message, f'Ошибка ввода данных \n{e} /help')
     except Exception as e:
-        bot.reply_to(message, f'Команда \n{e} не обработана')
+        bot.reply_to(message, f'Команда \n{e} не обработана /help')
 
     else:
         text = str.capitalize(f'Конвертация {amount} {quote} в {base} = {total_base}')
