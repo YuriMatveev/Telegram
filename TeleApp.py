@@ -31,7 +31,7 @@ def convert(message: telebot.types.Message):
         total_base = CurrencyConverter.convert(quote, base, amount)
 
     except APIException as e:
-        bot.reply_to(message, f'Ошибка ввода данных \n{e} /help')
+        bot.reply_to(message, f'Ошибка ввода данных \n{e}')
     except Exception as e:
         bot.reply_to(message, f'Команда \n{e} не обработана /help')
 
